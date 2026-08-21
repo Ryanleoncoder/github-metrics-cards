@@ -1,0 +1,43 @@
+﻿# ╔══════════════════════════════════════════════════════════╗
+# ║           GITHUB METRICS CARDS — CONFIGURATION          ║
+# ╚══════════════════════════════════════════════════════════╝
+#
+# Change your username, pick a theme, and push to GitHub.
+
+username: "Ryanleoncoder"
+
+# Preset Theme Options: neobrutalist | dark-minimal | pastel | cyberpunk | ocean | custom
+theme: "neobrutalist"
+
+custom_palette:
+  light_bg: "#F5F0E6"
+  light_text: "#0A0A0A"
+  light_subtext: "#7A7570"
+  dark_bg: "#161616"
+  dark_text: "#FFFFFF"
+  dark_subtext: "#AFAFAF"
+  primary: "#FFC700"
+  primary_light: "#FFE066"
+  primary_dark: "#E5A800"
+  tag_bg: "#242832"
+
+cards:
+  languages_commits: true
+  top_repos: true
+  year_in_code: true
+
+top_repos:
+  count: 3
+  show_language: true
+  show_topics: true
+  exclude: []
+
+languages:
+  max_languages: 3
+  label: "LANGUAGES I COMMIT IN"
+  sublabel: "HISTORICAL SIGNAL"
+
+year_in_code:
+  months: 5
+  label: "MY CODE, LATELY"
+  sublabel: "GITHUB CONTRIBUTION ACTIVITY"

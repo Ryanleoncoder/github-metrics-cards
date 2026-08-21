@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GITHUB METRICS CARDS — GERADOR DE CARDS PARA SEU PERFIL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;0,9..40,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ow: #F5F0E6;         
+      --ow2: #EAE4D4;        
+      --y: #FFC700;         
+      --y2: #E5A800;         
+      --k: #0A0A0A;          
+      --n4: #7A7570;         
+      
+      --font-display: 'Bebas Neue', Impact, sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--ow);
+      color: var(--k);
+      font-family: var(--font-body);
+      line-height: 1.5;
+    }
+
+    
+    header {
+      background: var(--ow);
+      border-bottom: 3px solid var(--k);
+      padding: 16px 0;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
+    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .brand {
+      font-family: var(--font-display); font-size: 32px; font-weight: 400;
+      letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; color: var(--k);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .brand-badge {
+      background: var(--y); border: 2px solid var(--k); color: var(--k);
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px; box-shadow: 2px 2px 0 var(--k);
+    }
+    
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--y); color: var(--k);
+      font-family: var(--font-body); font-size: 14px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.01em;
+      padding: 10px 20px; border-radius: 8px; border: 2px solid var(--k);
+      box-shadow: 3px 3px 0 var(--k); text-decoration: none; cursor: pointer;
+      transition: transform 80ms ease, box-shadow 80ms ease;
+    }
+    .btn-github:hover {
+      background: var(--y2); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--k);
+    }
+    .btn-github:active {
+      transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--k);
+    }
+
+    main {
+      flex: 1;
+      padding-bottom: 48px;
+    }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 56px 0 32px; }
+    .hero-chip {
+      display: inline-block; background: var(--k); color: #FFF;
+      font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.15em; padding: 4px 12px;
+      border-radius: 4px; border: 1.5px solid var(--k); margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: var(--font-display); font-size: 64px; font-weight: 400;
+      line-height: 0.95; letter-spacing: 0; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: var(--y); padding: 0 8px; border: 2px solid var(--k);
+      box-shadow: 3px 3px 0 var(--k); display: inline-block;
+    }
+    .hero p {
+      font-size: 16px; color: var(--n4); max-width: 680px; margin: 0 auto 32px;
+    }
+
+    .theme-tabs {
+      display: flex; justify-content: center; gap: 12px; margin-bottom: 36px; flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--ow2); border: 2px solid var(--k); color: var(--k);
+      font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 20px;
+      border-radius: 8px; box-shadow: 2px 2px 0 var(--k); cursor: pointer;
+      transition: transform 80ms ease, box-shadow 80ms ease;
+    }
+    .tab-btn.active {
+      background: var(--y); box-shadow: 4px 4px 0 var(--k); transform: translate(-1px, -1px);
+    }
+    .tab-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--k); }
+
+    /* Showcase Container — Clean Showcase without Double Card Frame Borders */
+    .showcase-card {
+      background: var(--ow2); border: 3px solid var(--k); border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--k); padding: 32px; margin-bottom: 48px;
+    }
+    .grid-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;
+    }
+    @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
+    
+    .showcase-card img { width: 100%; height: auto; display: block; border-radius: 14px; }
+
+    .config-card {
+      background: var(--ow2); border: 3px solid var(--k); border-radius: 18px;
+      box-shadow: 5px 5px 0 var(--k); padding: 32px; margin-bottom: 48px;
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px;
+    }
+    @media (max-width: 900px) { .config-card { grid-template-columns: 1fr; } }
+
+    .config-title { font-family: var(--font-display); font-size: 34px; text-transform: uppercase; margin-bottom: 8px; }
+    .config-desc { color: var(--n4); font-size: 14px; margin-bottom: 24px; }
+    
+    .field { margin-bottom: 16px; }
+    .field label {
+      display: block; font-family: var(--font-body); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; color: var(--k);
+    }
+    .input-box {
+      width: 100%; padding: 12px 14px; background: #FFF;
+      border: 2px solid var(--k); border-radius: 8px; box-shadow: 2px 2px 0 var(--k);
+      font-family: var(--font-mono); font-size: 13px; color: var(--k); outline: none;
+    }
+    .input-box:focus { border-color: var(--k); box-shadow: 3px 3px 0 var(--y); }
+
+    .code-box {
+      background: #161616; border: 2px solid var(--k); border-radius: 12px;
+      box-shadow: 3px 3px 0 var(--k); padding: 20px; font-family: var(--font-mono);
+      font-size: 12px; color: #FFF; position: relative; white-space: pre; overflow-x: auto;
+    }
+    .copy-btn {
+      position: absolute; top: 12px; right: 12px; background: var(--y); color: var(--k);
+      font-family: var(--font-body); font-size: 11px; font-weight: 700; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 6px; border: 1.5px solid var(--k); box-shadow: 2px 2px 0 var(--k);
+      cursor: pointer; transition: transform 80ms ease;
+    }
+    .copy-btn:active { transform: translate(1px, 1px); box-shadow: 0 0 0 var(--k); }
+
+    /* Ink Footer — Sticky Pinned to Bottom of Window/Page */
+    footer {
+      margin-top: auto;
+      background: var(--k); border-top: 2px solid rgba(255, 199, 0, 0.2);
+      padding: 24px 0; color: #FFF; text-align: center; width: 100%;
+    }
+    .footer-mono { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--y); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        GITHUB METRICS CARDS <span class="brand-badge">V1.0</span>
+      </a>
+      <a href="https://github.com/Ryanleoncoder/github-metrics-cards" class="btn-github" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        REPOSITÓRIO GITHUB
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-chip">✨ OPEN SOURCE SVG METRICS GENERATOR</div>
+      <h1>CARDS DE MÉTRICAS DINÂMICAS PARA SEU PERFIL.<br><span>SUA PALETA, SEU ESTILO.</span></h1>
+      <p>Gerador de cards dinâmicos para o seu perfil no GitHub. Escolha entre 3 temas pré-definidos (Neobrutalist, Dark Minimal, Cyberpunk), personalize suas cores e deixe o GitHub Actions atualizar suas métricas diariamente.</p>
+    </section>
+
+    <!-- Theme Switcher Tabs -->
+    <div class="theme-tabs">
+      <button class="tab-btn active" onclick="switchTheme('neobrutalist', this)">🟡 NEOBRUTALIST PAPER</button>
+      <button class="tab-btn" onclick="switchTheme('dark-minimal', this)">🔵 DARK MINIMAL</button>
+      <button class="tab-btn" onclick="switchTheme('cyberpunk', this)">🟣 CYBERPUNK NEON</button>
+    </div>
+
+    <section class="showcase-card">
+      <div class="grid-2">
+        <img id="img-langs" src="examples/neobrutalist/languages-commits.svg" alt="Languages Commits Card">
+        <img id="img-repos" src="examples/neobrutalist/languages-recent.svg" alt="Top Repos Card">
+      </div>
+      <img id="img-year" src="examples/neobrutalist/year-in-code.svg" alt="Year in Code 3D Graph">
+    </section>
+
+    <section class="config-card">
+      <div>
+        <h2 class="config-title">GERADOR DE CONFIG</h2>
+        <p class="config-desc">Personalize o arquivo <code>config.yml</code> e cole no seu repositório.</p>
+
+        <div class="field">
+          <label>USUÁRIO GITHUB</label>
+          <input type="text" id="cfg-user" class="input-box" value="Ryanleoncoder" oninput="updateConfig()">
+        </div>
+
+        <div class="field">
+          <label>PALETA DE TEMA</label>
+          <select id="cfg-theme" class="input-box" onchange="onThemeSelect(this.value)">
+            <option value="neobrutalist">neobrutalist</option>
+            <option value="dark-minimal">dark-minimal</option>
+            <option value="cyberpunk">cyberpunk</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <button class="copy-btn" onclick="copyConfig()">COPIAR CONFIG</button>
+        <code id="code-output">username: "Ryanleoncoder"
+theme: "neobrutalist"
+
+cards:
+  languages_commits: true
+  top_repos: true
+  year_in_code: true
+
+top_repos:
+  count: 3
+  show_language: true
+  show_topics: true</code>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="footer-mono">GITHUB METRICS CARDS · COMPILANDO IDEIAS E CONSUMINDO CAFÉ ☕</p>
+    </div>
+  </footer>
+
+  <script>
+    function switchTheme(name, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('cfg-theme').value = name;
+      updateConfig();
+
+      document.getElementById('img-langs').src = `examples/${name}/languages-commits.svg`;
+      document.getElementById('img-repos').src = `examples/${name}/languages-recent.svg`;
+      document.getElementById('img-year').src = `examples/${name}/year-in-code.svg`;
+    }
+
+    function onThemeSelect(name) {
+      const btns = Array.from(document.querySelectorAll('.tab-btn'));
+      const target = btns.find(b => b.textContent.toLowerCase().includes(name.replace('-', ' ')));
+      if (target) switchTheme(name, target);
+    }
+
+    function updateConfig() {
+      const user = document.getElementById('cfg-user').value || 'SEU_USUARIO';
+      const theme = document.getElementById('cfg-theme').value;
+      const content = `username: "${user}"\ntheme: "${theme}"\n\ncards:\n  languages_commits: true\n  top_repos: true\n  year_in_code: true\n\ntop_repos:\n  count: 3\n  show_language: true\n  show_topics: true`;
+      document.getElementById('code-output').textContent = content;
+    }
+
+    function copyConfig() {
+      const text = document.getElementById('code-output').textContent;
+      navigator.clipboard.writeText(text);
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'COPIADO! ✓';
+      setTimeout(() => btn.textContent = 'COPIAR CONFIG', 2000);
+    }
+  </script>
+</body>
+</html>
