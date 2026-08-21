@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="590" height="340" viewBox="0 0 590 340" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="590" height="320" viewBox="0 0 590 320" role="img">
   <title>My Top Repos</title>
-  <rect x="16" y="16" width="558" height="308" rx="14" fill="#2563EB"/>
-  <rect x="8" y="8" width="558" height="308" rx="14" fill="#121212" stroke="#3F3F46" stroke-width="3"/>
+  <rect x="16" y="16" width="558" height="288" rx="14" fill="#2563EB"/>
+  <rect x="8" y="8" width="558" height="288" rx="14" fill="#121212" stroke="#3F3F46" stroke-width="3"/>
   <text x="38" y="53" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="25" font-weight="800">MY TOP REPOS</text>
   <text x="39" y="77" fill="#A1A1AA" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.2">MOST ACTIVE / LAST 30 DAYS</text>
   <rect x="448" y="34" width="88" height="30" rx="5" fill="#3B82F6" stroke="#3F3F46" stroke-width="2"/>

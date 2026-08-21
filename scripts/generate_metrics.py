@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 GitHub Metrics SVG Generator — Open Source Edition
 Configurable via config.yml and customizable themes.
@@ -23,12 +23,11 @@ def parse_yaml(file_path):
         "custom_palette": {},
         "cards": {"languages_commits": True, "top_repos": True, "year_in_code": True},
         "top_repos": {"count": 3, "show_language": True, "show_topics": True, "exclude": []},
-        "languages": {"max_languages": 3, "label": "LANGUAGES I COMMIT IN", "sublabel": "HISTORICAL SIGNAL"},
+        "languages": {"max_languages": 5, "label": "LANGUAGES I COMMIT IN", "sublabel": "HISTORICAL SIGNAL"},
         "year_in_code": {"months": 5, "label": "MY CODE, LATELY", "sublabel": "GITHUB CONTRIBUTION ACTIVITY"}
     }
     if not os.path.exists(file_path):
         return config
-        
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
@@ -89,34 +88,47 @@ def generate_languages_commits_svg(lang_stats, cfg):
     colors = {
         "Python": "#3776AB", "JavaScript": "#F7DF1E", "TypeScript": "#3178C6",
         "HTML": "#E34F26", "CSS": "#1572B6", "Shell": "#89E051", "Java": "#E76F00",
-        "C++": "#F34B7D", "C#": "#178600", "Go": "#00ADD8", "Rust": "#DEA584"
+        "C++": "#F34B7D", "C#": "#178600", "Go": "#00ADD8", "Rust": "#DEA584",
+        "PLpgSQL": "#336791", "Dockerfile": "#384D54", "Ruby": "#CC342D",
+        "PHP": "#4F5D95", "Swift": "#F05138", "Kotlin": "#A97BFF",
+        "Go Template": "#00ADD8", "Makefile": "#427819", "Lua": "#000080"
     }
-    
+
     # Filter out any pre-existing 'Other' key so it is never duplicated
     cleaned_stats = {k: v for k, v in lang_stats.items() if k.lower() != "other"}
     sorted_langs = sorted(cleaned_stats.items(), key=lambda x: x[1], reverse=True)
-    
-    max_count = cfg.get("languages", {}).get("max_languages", 3)
+
+    # Cap at max 5 languages from config
+    max_count = min(cfg.get("languages", {}).get("max_languages", 5), 5)
     top_langs = sorted_langs[:max_count]
     other_bytes = sum(b for _, b in sorted_langs[max_count:])
     if other_bytes > 0:
         top_langs.append(("Other", other_bytes))
-        
+
     items = [(lang, round((b / total_bytes) * 100), colors.get(lang, "#8B8B8B")) for lang, b in top_langs]
-    
+
     label = cfg.get("languages", {}).get("label", "LANGUAGES I COMMIT IN")
     sublabel = cfg.get("languages", {}).get("sublabel", "HISTORICAL SIGNAL")
-    
+
+    # Dynamic height: header ~100px + 42px per row + 28px padding
+    num_items = len(items)
+    row_h = 42
+    header_h = 100
+    pad = 28
+    svg_h = header_h + (num_items * row_h) + pad
+    card_h = svg_h - 32
+
     svg = []
-    svg.append('<svg xmlns="http://www.w3.org/2000/svg" width="590" height="340" viewBox="0 0 590 340" role="img">')
+    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="590" height="{svg_h}" viewBox="0 0 590 {svg_h}" role="img">')
     svg.append(f'  <title>{label}</title>')
-    svg.append(f'  <rect x="16" y="16" width="558" height="308" rx="14" fill="{THEME["light_border"]}"/>')
-    svg.append(f'  <rect x="8" y="8" width="558" height="308" rx="14" fill="{THEME["light_bg"]}" stroke="{THEME["light_border"]}" stroke-width="3"/>')
+    svg.append(f'  <rect x="16" y="16" width="558" height="{card_h}" rx="14" fill="{THEME["light_border"]}"/>')
+    svg.append(f'  <rect x="8" y="8" width="558" height="{card_h}" rx="14" fill="{THEME["light_bg"]}" stroke="{THEME["light_border"]}" stroke-width="3"/>')
     svg.append(f'  <text x="38" y="53" fill="{THEME["light_text"]}" font-family="Arial, sans-serif" font-size="25" font-weight="800">{label}</text>')
     svg.append(f'  <text x="39" y="77" fill="{THEME["light_subtext"]}" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.2">{sublabel}</text>')
     svg.append(f'  <rect x="424" y="34" width="112" height="30" rx="5" fill="{THEME["primary"]}" stroke="{THEME["light_border"]}" stroke-width="2"/>')
-    svg.append(f'  <text x="480" y="54" text-anchor="middle" fill="{THEME.get("primary_text", "#0A0A0A")}" font-family="monospace" font-size="10" font-weight="700">BY COMMITS</text>')
-    
+    primary_text = THEME.get("primary_text", "#0A0A0A")
+    svg.append(f'  <text x="480" y="54" text-anchor="middle" fill="{primary_text}" font-family="monospace" font-size="10" font-weight="700">BY COMMITS</text>')
+
     y_pos = 109
     for lang, pct, col in items:
         cy = y_pos + 12
@@ -127,10 +139,10 @@ def generate_languages_commits_svg(lang_stats, cfg):
         if bar_w > 0:
             svg.append(f'  <rect x="195" y="{y_pos}" width="{bar_w}" height="16" rx="4" fill="{THEME["primary"]}" stroke="{THEME["light_border"]}" stroke-width="1.5"/>')
         svg.append(f'  <text x="498" y="{y_pos+13}" fill="{THEME["light_text"]}" font-family="monospace" font-size="12" font-weight="700">{pct}%</text>')
-        y_pos += 48
-        
+        y_pos += row_h
+
     svg.append('</svg>')
-    
+
     out_path = os.path.join(METRICS_DIR, "languages-commits.svg")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(svg))
@@ -140,35 +152,44 @@ def generate_top_repos_svg(repos_data, cfg):
     max_count = cfg.get("top_repos", {}).get("count", 3)
     top_items = repos_data[:max_count]
     max_commits = max([r.get('commits', 1) for r in top_items]) if top_items else 1
-    
+
+    # Dynamic height for repos card
+    num_repos = len(top_items)
+    repo_row_h = 60
+    header_h = 100
+    footer_h = 40
+    svg_h = header_h + (num_repos * repo_row_h) + footer_h
+    card_h = svg_h - 32
+
     svg = []
-    svg.append('<svg xmlns="http://www.w3.org/2000/svg" width="590" height="340" viewBox="0 0 590 340" role="img">')
+    svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="590" height="{svg_h}" viewBox="0 0 590 {svg_h}" role="img">')
     svg.append('  <title>My Top Repos</title>')
-    svg.append(f'  <rect x="16" y="16" width="558" height="308" rx="14" fill="{THEME["primary_dark"]}"/>')
-    svg.append(f'  <rect x="8" y="8" width="558" height="308" rx="14" fill="{THEME["dark_bg"]}" stroke="{THEME["dark_border"]}" stroke-width="3"/>')
+    svg.append(f'  <rect x="16" y="16" width="558" height="{card_h}" rx="14" fill="{THEME["primary_dark"]}"/>')
+    svg.append(f'  <rect x="8" y="8" width="558" height="{card_h}" rx="14" fill="{THEME["dark_bg"]}" stroke="{THEME["dark_border"]}" stroke-width="3"/>')
     svg.append(f'  <text x="38" y="53" fill="{THEME["dark_text"]}" font-family="Arial, sans-serif" font-size="25" font-weight="800">MY TOP REPOS</text>')
     svg.append(f'  <text x="39" y="77" fill="{THEME["dark_subtext"]}" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.2">MOST ACTIVE / LAST 30 DAYS</text>')
     svg.append(f'  <rect x="448" y="34" width="88" height="30" rx="5" fill="{THEME["primary"]}" stroke="{THEME["dark_border"]}" stroke-width="2"/>')
-    svg.append(f'  <text x="492" y="54" text-anchor="middle" fill="{THEME.get("primary_text", "#0A0A0A")}" font-family="monospace" font-size="10" font-weight="700">ACTIVE</text>')
-    
+    primary_text = THEME.get("primary_text", "#0A0A0A")
+    svg.append(f'  <text x="492" y="54" text-anchor="middle" fill="{primary_text}" font-family="monospace" font-size="10" font-weight="700">ACTIVE</text>')
+
     y_base = 120
     colors_bar = [THEME["primary"], THEME["primary_light"], THEME["primary_dark"]]
-    
+
     for i, repo in enumerate(top_items):
-        cy = y_base + (i * 60)
+        cy = y_base + (i * repo_row_h)
         name = repo['name'].upper()
         commits = repo['commits']
         topics = repo.get('topics', [])
         languages = repo.get('languages', [])
         bar_color = colors_bar[i % len(colors_bar)]
-        
+
         svg.append(f'  <circle cx="52" cy="{cy}" r="6" fill="{bar_color}" stroke="{THEME["dark_text"]}" stroke-width="1.2"/>')
         svg.append(f'  <text x="70" y="{cy-4}" fill="{THEME["dark_text"]}" font-family="Arial, sans-serif" font-size="15" font-weight="800">{name}</text>')
-        
+
         tag_x = 70
         tag_y = cy + 4
         max_tag_x = 325
-        
+
         primary_lang = languages[0] if languages else None
         if primary_lang:
             l_w = len(primary_lang) * 7 + 14
@@ -182,21 +203,23 @@ def generate_top_repos_svg(repos_data, cfg):
             t_w = len(t_str) * 7 + 14
             if tag_x + t_w > max_tag_x:
                 break
+            tag_text = THEME.get("tag_text", THEME["dark_text"])
             svg.append(f'  <rect x="{tag_x}" y="{tag_y}" width="{t_w}" height="18" rx="4" fill="{THEME["tag_bg"]}" stroke="{bar_color}" stroke-width="1"/>')
-            svg.append(f'  <text x="{tag_x + t_w//2}" y="{tag_y+13}" text-anchor="middle" fill="{THEME.get("tag_text", THEME["dark_text"])}" font-family="monospace" font-size="9" font-weight="700">{t_str}</text>')
+            svg.append(f'  <text x="{tag_x + t_w//2}" y="{tag_y+13}" text-anchor="middle" fill="{tag_text}" font-family="monospace" font-size="9" font-weight="700">{t_str}</text>')
             tag_x += t_w + 6
-                
+
         bar_max_w = 130
         bar_w = max(10, round(bar_max_w * (commits / max_commits)))
         bar_y = cy - 4
         svg.append(f'  <rect x="340" y="{bar_y}" width="130" height="14" rx="3" fill="{THEME["dark_bar_track"]}" stroke="#444" stroke-width="1"/>')
         svg.append(f'  <rect x="340" y="{bar_y}" width="{bar_w}" height="14" rx="3" fill="{bar_color}"/>')
         svg.append(f'  <text x="492" y="{bar_y+11}" fill="{THEME["dark_text"]}" font-family="monospace" font-size="12" font-weight="700">{commits}</text>')
-        
-    svg.append(f'  <path d="M340 280 H470" stroke="{THEME["dark_subtext"]}" stroke-width="1"/>')
-    svg.append(f'  <text x="492" y="284" fill="{THEME["primary"]}" font-family="monospace" font-size="9" font-weight="700">COMMITS</text>')
+
+    footer_y = y_base + (num_repos * repo_row_h) - 20
+    svg.append(f'  <path d="M340 {footer_y} H470" stroke="{THEME["dark_subtext"]}" stroke-width="1"/>')
+    svg.append(f'  <text x="492" y="{footer_y+4}" fill="{THEME["primary"]}" font-family="monospace" font-size="9" font-weight="700">COMMITS</text>')
     svg.append('</svg>')
-    
+
     out_path = os.path.join(METRICS_DIR, "languages-recent.svg")
     with open(out_path, "w", encoding="utf-8") as f:
         f.write("\n".join(svg))
@@ -205,7 +228,7 @@ def generate_top_repos_svg(repos_data, cfg):
 def generate_year_in_code_svg(contribution_days, cfg):
     now = datetime.now(timezone.utc)
     month_abbrs = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
-    
+
     MONTHS = []
     for i in range(4, -1, -1):
         target_date = now - timedelta(days=i * 30.5)
@@ -219,12 +242,12 @@ def generate_year_in_code_svg(contribution_days, cfg):
     DX_ROW, DY_ROW = -13.0, 8.0
     MONTH_GAP = 16.0
     X_START, Y_START = 120.0, 165.0
-    
+
     col_coords = {}
     curr_x, curr_y = X_START, Y_START
     month_col_ranges = {}
     c_global = 0
-    
+
     for m_idx, (m_name, num_w) in enumerate(MONTHS):
         start_c = c_global
         for w in range(num_w):
@@ -235,7 +258,7 @@ def generate_year_in_code_svg(contribution_days, cfg):
         month_col_ranges[m_idx] = (start_c, c_global - 1, m_name)
         curr_x += MONTH_GAP
         curr_y += DY_COL
-        
+
     TOTAL_COLS = c_global
     heights = {}
     idx = 0
@@ -252,9 +275,10 @@ def generate_year_in_code_svg(contribution_days, cfg):
     svg.append(f'  <rect x="17" y="17" width="1160" height="350" rx="16" fill="{THEME["light_border"]}"/>')
     svg.append(f'  <rect x="9" y="9" width="1160" height="350" rx="16" fill="{THEME["iso_bg"]}" stroke="{THEME["light_border"]}" stroke-width="3"/>')
     svg.append(f'  <text x="48" y="67" fill="{THEME["light_text"]}" font-family="Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1">MY CODE, LATELY</text>')
-    svg.append(f'  <text x="49" y="93" fill="{THEME["light_subtext"]}" font-family="monospace" font-size="12" font-weight="700" letter-spacing="1.8">GITHUB CONTRIBUTION ACTIVITY · LAST 120 DAYS</text>')
+    svg.append(f'  <text x="49" y="93" fill="{THEME["light_subtext"]}" font-family="monospace" font-size="12" font-weight="700" letter-spacing="1.8">GITHUB CONTRIBUTION ACTIVITY \u00b7 LAST 120 DAYS</text>')
     svg.append(f'  <rect x="930" y="42" width="194" height="38" rx="6" fill="{THEME["primary"]}" stroke="{THEME["light_border"]}" stroke-width="2"/>')
-    svg.append(f'  <text x="1027" y="66" text-anchor="middle" fill="{THEME.get("primary_text", "#0A0A0A")}" font-family="monospace" font-size="12" font-weight="700">NOW → 120 DAYS</text>')
+    primary_text = THEME.get("primary_text", "#0A0A0A")
+    svg.append(f'  <text x="1027" y="66" text-anchor="middle" fill="{primary_text}" font-family="monospace" font-size="12" font-weight="700">NOW \u2192 120 DAYS</text>')
 
     top_cols = {0: THEME["iso_top_0"], 1: THEME["iso_top_1"], 2: THEME["iso_top_2"], 3: THEME["iso_top_3"], 4: THEME["iso_top_4"]}
     DH = 7.5
@@ -306,7 +330,8 @@ def generate_year_in_code_svg(contribution_days, cfg):
     # Footer Legend
     svg.append(f'  <path d="M48 314 H1124" stroke="{THEME["light_border"]}" stroke-width="2"/>')
     svg.append(f'  <text x="48" y="342" fill="{THEME["light_text"]}" font-family="monospace" font-size="11" font-weight="700">LESS</text>')
-    svg.append('  <g transform="translate(92 331)">')
+    translate_str = "translate(92 331)"
+    svg.append(f'  <g transform="{translate_str}">')
     for i in range(5):
         svg.append(f'    <rect x="{i*21}" y="-10" width="14" height="14" fill="{top_cols[i]}" stroke="{THEME["light_border"]}" stroke-width="1"/>')
     svg.append('  </g>')
@@ -320,33 +345,33 @@ def generate_year_in_code_svg(contribution_days, cfg):
 
 def main():
     print(f"Fetching GitHub metrics for '{USERNAME}' using theme '{THEME_NAME}'...")
-    
+
     repos_url = f"https://api.github.com/users/{USERNAME}/repos?per_page=100&sort=updated"
     if TOKEN:
         repos_url = "https://api.github.com/user/repos?visibility=all&affiliation=owner&per_page=100&sort=updated"
-        
+
     repos_raw = fetch_json(repos_url)
     lang_bytes = {}
     repos_list = []
-    
+
     if repos_raw and isinstance(repos_raw, list):
         for repo in repos_raw:
             if repo.get('fork', False): continue
             r_name = repo.get('name', '')
             if r_name.lower() == USERNAME.lower(): continue
-            
+
             r_topics = repo.get('topics', [])
             langs_url = repo.get('languages_url', '')
             langs_data = fetch_json(langs_url) if langs_url else {}
             if langs_data:
                 for l_name, l_b in langs_data.items():
                     lang_bytes[l_name] = lang_bytes.get(l_name, 0) + l_b
-            
+
             pushed_at = repo.get('pushed_at', '')
             pushed_dt = datetime.fromisoformat(pushed_at.replace('Z', '+00:00')) if pushed_at else datetime.now(timezone.utc)
             days_since = max(1, (datetime.now(timezone.utc) - pushed_dt).days)
             commit_count = max(1, int(100 / (days_since ** 0.5)))
-            
+
             display_name = r_name.replace('-', ' ').replace('_', ' ').title() if len(r_name) <= 22 else r_name
             repos_list.append({
                 'name': display_name,
@@ -354,14 +379,14 @@ def main():
                 'languages': list(langs_data.keys()) if langs_data else [],
                 'commits': commit_count
             })
-            
+
     if not repos_list:
         repos_list = [
             {'name': 'Experiencie Connect', 'topics': ['cx-training', 'game-loop'], 'languages': ['JavaScript', 'HTML'], 'commits': 48},
             {'name': 'Quick Setup VPS', 'topics': ['cli', 'security-hardening'], 'languages': ['Shell'], 'commits': 36},
             {'name': 'Organizador De Demandas', 'topics': ['dashboard', 'flask'], 'languages': ['Python', 'HTML'], 'commits': 25}
         ]
-        
+
     if not lang_bytes:
         lang_bytes = {"JavaScript": 3400, "Python": 2200, "HTML": 1800, "CSS": 1200, "Shell": 1000}
 
