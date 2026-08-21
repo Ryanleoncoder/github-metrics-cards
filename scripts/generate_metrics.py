@@ -86,9 +86,16 @@ def fetch_json(url):
 
 def generate_languages_commits_svg(lang_stats, cfg):
     total_bytes = sum(lang_stats.values()) if lang_stats else 1
-    colors = {"Python": "#3776AB", "JavaScript": "#F7DF1E", "Java": "#E76F00", "TypeScript": "#3178C6", "HTML": "#E34F26", "CSS": "#1572B6", "Shell": "#89E051"}
+    colors = {
+        "Python": "#3776AB", "JavaScript": "#F7DF1E", "TypeScript": "#3178C6",
+        "HTML": "#E34F26", "CSS": "#1572B6", "Shell": "#89E051", "Java": "#E76F00",
+        "C++": "#F34B7D", "C#": "#178600", "Go": "#00ADD8", "Rust": "#DEA584"
+    }
     
-    sorted_langs = sorted(lang_stats.items(), key=lambda x: x[1], reverse=True)
+    # Filter out any pre-existing 'Other' key so it is never duplicated
+    cleaned_stats = {k: v for k, v in lang_stats.items() if k.lower() != "other"}
+    sorted_langs = sorted(cleaned_stats.items(), key=lambda x: x[1], reverse=True)
+    
     max_count = cfg.get("languages", {}).get("max_languages", 3)
     top_langs = sorted_langs[:max_count]
     other_bytes = sum(b for _, b in sorted_langs[max_count:])
@@ -356,7 +363,7 @@ def main():
         ]
         
     if not lang_bytes:
-        lang_bytes = {"JavaScript": 3400, "Python": 2200, "CSS": 1800, "Other": 2600}
+        lang_bytes = {"JavaScript": 3400, "Python": 2200, "HTML": 1800, "CSS": 1200, "Shell": 1000}
 
     repos_list = sorted(repos_list, key=lambda x: x['commits'], reverse=True)
     random.seed(42)

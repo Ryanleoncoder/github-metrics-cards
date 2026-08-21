@@ -3,7 +3,7 @@
   <rect x="17" y="17" width="1160" height="350" rx="16" fill="#0A0A0A"/>
   <rect x="9" y="9" width="1160" height="350" rx="16" fill="#F5F0E6" stroke="#0A0A0A" stroke-width="3"/>
   <text x="48" y="67" fill="#0A0A0A" font-family="Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1">MY CODE, LATELY</text>
-  <text x="49" y="93" fill="#7A7570" font-family="monospace" font-size="12" font-weight="700" letter-spacing="1.8">GITHUB CONTRIBUTION ACTIVITY · LAST 120 DAYS</text>
+  <text x="49" y="93" fill="#5C5752" font-family="monospace" font-size="12" font-weight="700" letter-spacing="1.8">GITHUB CONTRIBUTION ACTIVITY · LAST 120 DAYS</text>
   <rect x="930" y="42" width="194" height="38" rx="6" fill="#FFC700" stroke="#0A0A0A" stroke-width="2"/>
   <text x="1027" y="66" text-anchor="middle" fill="#0A0A0A" font-family="monospace" font-size="12" font-weight="700">NOW → 120 DAYS</text>
   <g>
