@@ -350,7 +350,7 @@
     <line x1="532.0" y1="174.5" x2="532.0" y2="191.5" stroke="#0A0A0A" stroke-width="1.5" stroke-dasharray="3 3"/>
     <text x="708.0" y="182.5" text-anchor="middle" fill="#0A0A0A" font-family="monospace" font-size="13" font-weight="800">AUG</text>
     <line x1="708.0" y1="189.5" x2="708.0" y2="206.5" stroke="#0A0A0A" stroke-width="1.5" stroke-dasharray="3 3"/>
-    <text x="884.0" y="197.5" text-anchor="middle" fill="#0A0A0A" font-family="monospace" font-size="13" font-weight="800">AUG / NOW</text>
+    <text x="884.0" y="197.5" text-anchor="middle" fill="#0A0A0A" font-family="monospace" font-size="13" font-weight="800">SEP / NOW</text>
     <line x1="884.0" y1="204.5" x2="884.0" y2="221.5" stroke="#0A0A0A" stroke-width="1.5" stroke-dasharray="3 3"/>
   </g>
   <path d="M48 314 H1124" stroke="#0A0A0A" stroke-width="2"/>
