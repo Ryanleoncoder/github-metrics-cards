@@ -9,8 +9,8 @@
   <circle cx="52" cy="121" r="6" fill="#3776AB" stroke="#0A0A0A" stroke-width="1.5"/>
   <text x="70" y="126" fill="#0A0A0A" font-family="Arial, sans-serif" font-size="15" font-weight="800">PYTHON</text>
   <rect x="195" y="109" width="290" height="16" rx="4" fill="#EAE4D4" stroke="#0A0A0A" stroke-width="1.5"/>
-  <rect x="195" y="109" width="212" height="16" rx="4" fill="#FFC700" stroke="#0A0A0A" stroke-width="1.5"/>
-  <text x="498" y="122" fill="#0A0A0A" font-family="monospace" font-size="12" font-weight="700">73%</text>
+  <rect x="195" y="109" width="215" height="16" rx="4" fill="#FFC700" stroke="#0A0A0A" stroke-width="1.5"/>
+  <text x="498" y="122" fill="#0A0A0A" font-family="monospace" font-size="12" font-weight="700">74%</text>
   <circle cx="52" cy="163" r="6" fill="#00ADD8" stroke="#0A0A0A" stroke-width="1.5"/>
   <text x="70" y="168" fill="#0A0A0A" font-family="Arial, sans-serif" font-size="15" font-weight="800">GO</text>
   <rect x="195" y="151" width="290" height="16" rx="4" fill="#EAE4D4" stroke="#0A0A0A" stroke-width="1.5"/>
@@ -24,10 +24,10 @@
   <circle cx="52" cy="247" r="6" fill="#1572B6" stroke="#0A0A0A" stroke-width="1.5"/>
   <text x="70" y="252" fill="#0A0A0A" font-family="Arial, sans-serif" font-size="15" font-weight="800">CSS</text>
   <rect x="195" y="235" width="290" height="16" rx="4" fill="#EAE4D4" stroke="#0A0A0A" stroke-width="1.5"/>
-  <rect x="195" y="235" width="6" height="16" rx="4" fill="#FFC700" stroke="#0A0A0A" stroke-width="1.5"/>
-  <text x="498" y="248" fill="#0A0A0A" font-family="monospace" font-size="12" font-weight="700">2%</text>
+  <rect x="195" y="235" width="3" height="16" rx="4" fill="#FFC700" stroke="#0A0A0A" stroke-width="1.5"/>
+  <text x="498" y="248" fill="#0A0A0A" font-family="monospace" font-size="12" font-weight="700">1%</text>
 <path d="M38 295 H536" stroke="#0A0A0A"/>
-<text x="38" y="322" fill="#0A0A0A" font-family="Arial" font-size="18" font-weight="700">67 commits</text>
+<text x="38" y="322" fill="#0A0A0A" font-family="Arial" font-size="18" font-weight="700">68 commits</text>
 <text x="38" y="342" fill="#7A7570" font-family="monospace" font-size="10">Grouped by each repository’s main language.</text>
-<text x="536" y="510" text-anchor="end" fill="#7A7570" font-family="monospace" font-size="10">UPDATED 2026-10-07 21:58 UTC</text>
+<text x="536" y="510" text-anchor="end" fill="#7A7570" font-family="monospace" font-size="10">UPDATED 2026-10-07 22:44 UTC</text>
 </svg>
