@@ -1,11 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="590" height="320" viewBox="0 0 590 320" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="590" height="470" viewBox="0 0 590 470" role="img">
   <title>My Top Repos</title>
-  <rect x="16" y="16" width="558" height="288" rx="14" fill="#2563EB"/>
-  <rect x="8" y="8" width="558" height="288" rx="14" fill="#121212" stroke="#3F3F46" stroke-width="3"/>
+  <rect x="16" y="16" width="558" height="438" rx="14" fill="#2563EB"/>
+  <rect x="8" y="8" width="558" height="438" rx="14" fill="#121212" stroke="#3F3F46" stroke-width="3"/>
   <text x="38" y="53" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="25" font-weight="800">MY TOP REPOS</text>
-  <text x="39" y="77" fill="#A1A1AA" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.2">MOST ACTIVE / LAST 30 DAYS</text>
+  <text x="39" y="77" fill="#A1A1AA" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1.2">MY COMMITS / LAST 30 DAYS</text>
   <rect x="448" y="34" width="88" height="30" rx="5" fill="#3B82F6" stroke="#3F3F46" stroke-width="2"/>
   <text x="492" y="54" text-anchor="middle" fill="#FFFFFF" font-family="monospace" font-size="10" font-weight="700">ACTIVE</text>
+<g><title>Experiencie Connect: 48 commits</title>
   <circle cx="52" cy="120" r="6" fill="#3B82F6" stroke="#FFFFFF" stroke-width="1.2"/>
   <text x="70" y="116" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">EXPERIENCIE CONNECT</text>
   <rect x="70" y="124" width="84" height="18" rx="4" fill="#27272A" stroke="#A1A1AA" stroke-width="1"/>
@@ -15,6 +16,8 @@
   <rect x="340" y="116" width="130" height="14" rx="3" fill="#27272A" stroke="#444" stroke-width="1"/>
   <rect x="340" y="116" width="130" height="14" rx="3" fill="#3B82F6"/>
   <text x="492" y="127" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">48</text>
+</g>
+<g><title>Quick Setup VPS: 36 commits</title>
   <circle cx="52" cy="180" r="6" fill="#60A5FA" stroke="#FFFFFF" stroke-width="1.2"/>
   <text x="70" y="176" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">QUICK SETUP VPS</text>
   <rect x="70" y="184" width="49" height="18" rx="4" fill="#27272A" stroke="#A1A1AA" stroke-width="1"/>
@@ -26,6 +29,8 @@
   <rect x="340" y="176" width="130" height="14" rx="3" fill="#27272A" stroke="#444" stroke-width="1"/>
   <rect x="340" y="176" width="98" height="14" rx="3" fill="#60A5FA"/>
   <text x="492" y="187" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">36</text>
+</g>
+<g><title>Organizador De Demandas: 25 commits</title>
   <circle cx="52" cy="240" r="6" fill="#2563EB" stroke="#FFFFFF" stroke-width="1.2"/>
   <text x="70" y="236" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">ORGANIZADOR DE DEMANDAS</text>
   <rect x="70" y="244" width="56" height="18" rx="4" fill="#27272A" stroke="#A1A1AA" stroke-width="1"/>
@@ -37,6 +42,8 @@
   <rect x="340" y="236" width="130" height="14" rx="3" fill="#27272A" stroke="#444" stroke-width="1"/>
   <rect x="340" y="236" width="68" height="14" rx="3" fill="#2563EB"/>
   <text x="492" y="247" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">25</text>
+</g>
   <path d="M340 280 H470" stroke="#A1A1AA" stroke-width="1"/>
   <text x="492" y="284" fill="#3B82F6" font-family="monospace" font-size="9" font-weight="700">COMMITS</text>
+<text x="536" y="440" text-anchor="end" fill="#A1A1AA" font-family="monospace" font-size="10">DEMO DATA / THEME PREVIEW</text>
 </svg>

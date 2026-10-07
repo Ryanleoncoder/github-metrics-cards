@@ -5,6 +5,7 @@ username: Ryanleoncoder
 
 # Preset: neobrutalist | dark-minimal | cyberpunk
 theme: neobrutalist
+include_private: false
 
 custom_palette:
   light_bg: '#F5F0E6'
@@ -24,17 +25,19 @@ cards:
   year_in_code: true
 
 top_repos:
-  count: 3
+  count: 6
+  days: 30
   show_language: true
   show_topics: true
   exclude: []
 
 languages:
   max_languages: 5
+  metric: recent_commits
   label: 'LANGUAGES I COMMIT IN'
-  sublabel: 'HISTORICAL SIGNAL'
+  sublabel: 'LAST 30 DAYS / PRIMARY LANGUAGE'
 
 year_in_code:
-  months: 5
+  days: 120
   label: 'MY CODE, LATELY'
   sublabel: 'GITHUB CONTRIBUTION ACTIVITY'

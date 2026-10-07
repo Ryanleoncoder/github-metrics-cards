@@ -5,6 +5,7 @@ Generate SVG preview examples for all 3 themes in examples/
 
 import os
 import sys
+from datetime import date, timedelta
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, REPO_ROOT)
@@ -22,9 +23,12 @@ def main():
         {'name': 'Quick Setup VPS', 'topics': ['cli', 'security-hardening'], 'languages': ['Shell'], 'commits': 36},
         {'name': 'Organizador De Demandas', 'topics': ['dashboard', 'flask'], 'languages': ['Python', 'HTML'], 'commits': 25}
     ]
-    import random
-    random.seed(42)
-    sample_contribs = [random.choice([0, 0, 1, 2, 4, 7, 0, 3, 5]) for _ in range(140)]
+    levels = ["NONE", "FIRST_QUARTILE", "SECOND_QUARTILE", "THIRD_QUARTILE", "FOURTH_QUARTILE"]
+    start = date(2026, 6, 8)
+    sample_contribs = [{"date": (start + timedelta(days=i)).isoformat(),
+                        "contributionCount": (i * 7) % 12,
+                        "contributionLevel": levels[((i * 7) % 12 + 2) // 3]} for i in range(120)]
+    example_config = dict(gm.config, _demo=True, _data={"repos": sample_repos, "languages": sample_langs})
 
     for theme_name in THEMES.keys():
         print(f"Generating example SVGs for theme '{theme_name}'...")
@@ -35,9 +39,9 @@ def main():
         gm.THEME = get_theme(theme_name)
         gm.METRICS_DIR = theme_dir
         
-        gm.generate_languages_commits_svg(sample_langs, gm.config)
-        gm.generate_top_repos_svg(sample_repos, gm.config)
-        gm.generate_year_in_code_svg(sample_contribs, gm.config)
+        gm.generate_languages_commits_svg(sample_langs, example_config)
+        gm.generate_top_repos_svg(sample_repos, example_config)
+        gm.generate_year_in_code_svg(sample_contribs, example_config)
         
     print("All theme examples generated successfully in examples/")
 

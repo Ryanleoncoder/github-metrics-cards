@@ -41,9 +41,9 @@
       position: sticky; top: 0; z-index: 100;
     }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; width: 100%; }
-    .nav { display: flex; justify-content: space-between; align-items: center; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
     .brand {
-      font-family: var(--font-display); font-size: 32px; font-weight: 400;
+      font-family: var(--font-display); font-size: clamp(20px, 4vw, 32px); font-weight: 400;
       letter-spacing: 0.5px; text-transform: uppercase; text-decoration: none; color: var(--k);
       display: flex; align-items: center; gap: 12px;
     }
@@ -83,7 +83,7 @@
       border-radius: 4px; border: 1.5px solid var(--k); margin-bottom: 20px;
     }
     .hero h1 {
-      font-family: var(--font-display); font-size: 64px; font-weight: 400;
+      font-family: var(--font-display); font-size: clamp(32px, 6vw, 64px); font-weight: 400;
       line-height: 0.95; letter-spacing: 0; text-transform: uppercase; margin-bottom: 16px;
     }
     .hero h1 span {
@@ -120,6 +120,14 @@
     @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } }
     
     .showcase-card img { width: 100%; height: auto; display: block; border-radius: 14px; }
+    .data-notice { margin: 0 0 20px; font-family: var(--font-mono); font-size: 12px; }
+    .live-btn { margin-bottom: 16px; }
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .showcase-card, .config-card { padding: 12px; }
+      .hero { padding-top: 32px; }
+      .brand { flex-wrap: wrap; }
+    }
 
     .config-card {
       background: var(--ow2); border: 3px solid var(--k); border-radius: 18px;
@@ -183,7 +191,7 @@
     <section class="hero">
       <div class="hero-chip">✨ OPEN SOURCE SVG METRICS GENERATOR</div>
       <h1>CARDS DE MÉTRICAS DINÂMICAS PARA SEU PERFIL.<br><span>SUA PALETA, SEU ESTILO.</span></h1>
-      <p>Gerador de cards dinâmicos para o seu perfil no GitHub. Escolha entre 3 temas pré-definidos (Neobrutalist, Dark Minimal, Cyberpunk), personalize suas cores e deixe o GitHub Actions atualizar suas métricas diariamente.</p>
+      <p>Seus commits, projetos ativos e contribuições, consultados na API do GitHub. Atualização diária, período explícito e três temas. Se a consulta falhar, o gerador mantém os últimos dados válidos e informa o erro.</p>
     </section>
 
     <!-- Theme Switcher Tabs -->
@@ -194,11 +202,13 @@
     </div>
 
     <section class="showcase-card">
+      <button class="tab-btn live-btn active" id="live-btn" type="button" onclick="showLive()">PERFIL REAL</button>
+      <p class="data-notice" id="data-notice" aria-live="polite">Carregando a última atualização do perfil…</p>
       <div class="grid-2">
-        <img id="img-langs" src="examples/neobrutalist/languages-commits.svg" alt="Languages Commits Card">
-        <img id="img-repos" src="examples/neobrutalist/languages-recent.svg" alt="Top Repos Card">
+        <img id="img-langs" src="assets/metrics/languages-commits.svg" alt="Linguagens dos commits recentes, agrupadas pela linguagem principal do projeto">
+        <img id="img-repos" src="assets/metrics/languages-recent.svg" alt="Projetos com mais commits do autor no período">
       </div>
-      <img id="img-year" src="examples/neobrutalist/year-in-code.svg" alt="Year in Code 3D Graph">
+      <img id="img-year" src="assets/metrics/year-in-code.svg" alt="Calendário de contribuições reais, com data e contagem em cada dia">
     </section>
 
     <section class="config-card">
@@ -219,6 +229,21 @@
             <option value="cyberpunk">cyberpunk</option>
           </select>
         </div>
+        <div class="field">
+          <label for="cfg-count">PROJETOS NO RANKING</label>
+          <input type="number" id="cfg-count" class="input-box" value="6" min="1" max="10" oninput="updateConfig()">
+        </div>
+        <div class="field">
+          <label for="cfg-days">PERÍODO DOS COMMITS, EM DIAS</label>
+          <input type="number" id="cfg-days" class="input-box" value="30" min="1" max="365" oninput="updateConfig()">
+        </div>
+        <div class="field">
+          <label for="cfg-metric">COMO MEDIR AS LINGUAGENS</label>
+          <select id="cfg-metric" class="input-box" onchange="updateConfig()">
+            <option value="recent_commits">Commits recentes, por linguagem principal</option>
+            <option value="code_size">Tamanho do código nos repositórios</option>
+          </select>
+        </div>
       </div>
 
       <div class="code-box">
@@ -231,10 +256,19 @@ cards:
   top_repos: true
   year_in_code: true
 
+include_private: false
+
 top_repos:
-  count: 3
+  count: 6
+  days: 30
   show_language: true
-  show_topics: true</code>
+  show_topics: true
+
+languages:
+  metric: recent_commits
+
+year_in_code:
+  days: 120</code>
       </div>
     </section>
   </main>
@@ -246,7 +280,33 @@ top_repos:
   </footer>
 
   <script>
+    let liveNotice = 'Dados reais. Consulte o horário de atualização nos cards.';
+    let viewingLive = true;
+    fetch('assets/metrics/metrics.json', { cache: 'no-cache' })
+      .then(response => { if (!response.ok) throw new Error('sem dados'); return response.json(); })
+      .then(data => {
+        const updated = new Date(data.generated_at).toLocaleString('pt-BR', { timeZone: 'UTC' });
+        liveNotice = `@${data.username} · atualizado em ${updated} UTC · ${data.repos.length} projetos ativos · fonte: GitHub`;
+        if (viewingLive) document.getElementById('data-notice').textContent = liveNotice;
+      })
+      .catch(() => {
+        liveNotice = 'Sem metadados da atualização. Confira o horário nos cards e o resultado do workflow.';
+        if (viewingLive) document.getElementById('data-notice').textContent = liveNotice;
+      });
+
+    function showLive() {
+      viewingLive = true;
+      document.querySelectorAll('.tab-btn').forEach(button => button.classList.remove('active'));
+      document.getElementById('live-btn').classList.add('active');
+      document.getElementById('data-notice').textContent = liveNotice;
+      document.getElementById('img-langs').src = 'assets/metrics/languages-commits.svg';
+      document.getElementById('img-repos').src = 'assets/metrics/languages-recent.svg';
+      document.getElementById('img-year').src = 'assets/metrics/year-in-code.svg';
+    }
+
     function switchTheme(name, btn) {
+      viewingLive = false;
+      document.getElementById('data-notice').textContent = 'PRÉVIA DE TEMA · dados fictícios, não são estatísticas do perfil.';
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       document.getElementById('cfg-theme').value = name;
@@ -259,24 +319,33 @@ top_repos:
 
     function onThemeSelect(name) {
       const btns = Array.from(document.querySelectorAll('.tab-btn'));
-      const target = btns.find(b => b.textContent.toLowerCase().includes(name.replace('-', ' ')));
+      const target = btns.find(b => b.getAttribute('onclick')?.includes(`'${name}'`));
       if (target) switchTheme(name, target);
     }
 
     function updateConfig() {
       const user = document.getElementById('cfg-user').value || 'SEU_USUARIO';
       const theme = document.getElementById('cfg-theme').value;
-      const content = `username: "${user}"\ntheme: "${theme}"\n\ncards:\n  languages_commits: true\n  top_repos: true\n  year_in_code: true\n\ntop_repos:\n  count: 3\n  show_language: true\n  show_topics: true`;
+      const count = Math.max(1, Math.min(10, Number(document.getElementById('cfg-count').value) || 6));
+      const days = Math.max(1, Math.min(365, Number(document.getElementById('cfg-days').value) || 30));
+      const metric = document.getElementById('cfg-metric').value;
+      const label = metric === 'code_size' ? 'LANGUAGES IN MY REPOS' : 'LANGUAGES I COMMIT IN';
+      const content = `username: ${JSON.stringify(user)}\ntheme: "${theme}"\ninclude_private: false\n\ncards:\n  languages_commits: true\n  top_repos: true\n  year_in_code: true\n\ntop_repos:\n  count: ${count}\n  days: ${days}\n  show_language: true\n  show_topics: true\n  exclude: []\n\nlanguages:\n  metric: ${metric}\n  label: '${label}'\n  max_languages: 5\n\nyear_in_code:\n  days: 120`;
       document.getElementById('code-output').textContent = content;
     }
 
-    function copyConfig() {
+    async function copyConfig() {
       const text = document.getElementById('code-output').textContent;
-      navigator.clipboard.writeText(text);
       const btn = document.querySelector('.copy-btn');
-      btn.textContent = 'COPIADO! ✓';
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = 'COPIADO!';
+      } catch {
+        btn.textContent = 'SELECIONE E COPIE O TEXTO';
+      }
       setTimeout(() => btn.textContent = 'COPIAR CONFIG', 2000);
     }
+    updateConfig();
   </script>
 </body>
 </html>

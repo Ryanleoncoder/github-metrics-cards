@@ -96,6 +96,6 @@ THEMES = {
 
 def get_theme(theme_name, custom_palette=None):
     theme = THEMES.get(theme_name, THEMES["neobrutalist"]).copy()
-    if theme_name == "custom" and custom_palette:
+    if custom_palette:
         theme.update({k: v for k, v in custom_palette.items() if v})
     return theme

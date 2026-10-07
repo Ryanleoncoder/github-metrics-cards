@@ -1,0 +1,715 @@
+{
+  "username": "Ryanleoncoder",
+  "generated_at": "2026-10-07T21:58:21.589168Z",
+  "start": "2026-06-10",
+  "end": "2026-10-07",
+  "recent_start": "2026-09-08",
+  "include_private": false,
+  "repos": [
+    {
+      "name": "RobinBandit",
+      "url": "https://github.com/Ryanleoncoder/RobinBandit",
+      "commits": 23,
+      "topics": [
+        "adaptive-routing",
+        "ai-infrastructure",
+        "failover"
+      ],
+      "languages": [
+        "Python"
+      ]
+    },
+    {
+      "name": "Prove2Pass",
+      "url": "https://github.com/Ryanleoncoder/Prove2Pass",
+      "commits": 11,
+      "topics": [],
+      "languages": [
+        "Go"
+      ]
+    },
+    {
+      "name": "OCI-Relay",
+      "url": "https://github.com/Ryanleoncoder/OCI-Relay",
+      "commits": 8,
+      "topics": [
+        "devops",
+        "free-tier",
+        "oci"
+      ],
+      "languages": [
+        "Python"
+      ]
+    },
+    {
+      "name": "tato-runtime",
+      "url": "https://github.com/Ryanleoncoder/tato-runtime",
+      "commits": 7,
+      "topics": [
+        "accessibility",
+        "ai-agents",
+        "browser-automation"
+      ],
+      "languages": [
+        "Python"
+      ]
+    },
+    {
+      "name": "order-events-lab",
+      "url": "https://github.com/Ryanleoncoder/order-events-lab",
+      "commits": 6,
+      "topics": [
+        "event-driven",
+        "kafka",
+        "messaging"
+      ],
+      "languages": [
+        "Python"
+      ]
+    },
+    {
+      "name": "service-request-api",
+      "url": "https://github.com/Ryanleoncoder/service-request-api",
+      "commits": 6,
+      "topics": [
+        "java",
+        "maven",
+        "mongodb"
+      ],
+      "languages": [
+        "Java"
+      ]
+    },
+    {
+      "name": "customer-data-pipeline",
+      "url": "https://github.com/Ryanleoncoder/customer-data-pipeline",
+      "commits": 5,
+      "topics": [
+        "data-pipeline",
+        "etl",
+        "mongodb"
+      ],
+      "languages": [
+        "Python"
+      ]
+    },
+    {
+      "name": "ia-com-proposito",
+      "url": "https://github.com/Ryanleoncoder/ia-com-proposito",
+      "commits": 1,
+      "topics": [],
+      "languages": [
+        "CSS"
+      ]
+    }
+  ],
+  "languages": {
+    "Python": 49,
+    "Go": 11,
+    "Java": 6,
+    "CSS": 1
+  },
+  "days": [
+    {
+      "date": "2026-06-10",
+      "contributionCount": 20,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-06-11",
+      "contributionCount": 23,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-06-12",
+      "contributionCount": 30,
+      "contributionLevel": "FOURTH_QUARTILE"
+    },
+    {
+      "date": "2026-06-13",
+      "contributionCount": 17,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-06-14",
+      "contributionCount": 10,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-06-15",
+      "contributionCount": 10,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-06-16",
+      "contributionCount": 5,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-17",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-06-18",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-19",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-20",
+      "contributionCount": 6,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-21",
+      "contributionCount": 15,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-06-22",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-23",
+      "contributionCount": 12,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-06-24",
+      "contributionCount": 4,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-25",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-26",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-27",
+      "contributionCount": 4,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-28",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-06-29",
+      "contributionCount": 3,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-06-30",
+      "contributionCount": 6,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-01",
+      "contributionCount": 7,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-02",
+      "contributionCount": 31,
+      "contributionLevel": "FOURTH_QUARTILE"
+    },
+    {
+      "date": "2026-07-03",
+      "contributionCount": 13,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-07-04",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-05",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-06",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-07",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-08",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-09",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-10",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-11",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-12",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-13",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-14",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-15",
+      "contributionCount": 3,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-16",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-17",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-18",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-19",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-20",
+      "contributionCount": 6,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-21",
+      "contributionCount": 11,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-07-22",
+      "contributionCount": 14,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-07-23",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-24",
+      "contributionCount": 10,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-07-25",
+      "contributionCount": 16,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-07-26",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-27",
+      "contributionCount": 19,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-07-28",
+      "contributionCount": 3,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-07-29",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-30",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-07-31",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-08-01",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-02",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-03",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-04",
+      "contributionCount": 4,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-08-05",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-06",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-08-07",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-08",
+      "contributionCount": 47,
+      "contributionLevel": "FOURTH_QUARTILE"
+    },
+    {
+      "date": "2026-08-09",
+      "contributionCount": 7,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-08-10",
+      "contributionCount": 5,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-08-11",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-12",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-13",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-14",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-15",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-16",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-17",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-18",
+      "contributionCount": 4,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-08-19",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-20",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-21",
+      "contributionCount": 21,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-08-22",
+      "contributionCount": 13,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-08-23",
+      "contributionCount": 18,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-08-24",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-25",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-26",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-27",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-28",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-29",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-30",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-08-31",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-01",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-02",
+      "contributionCount": 4,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-03",
+      "contributionCount": 5,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-04",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-05",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-06",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-07",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-08",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-09",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-10",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-11",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-12",
+      "contributionCount": 10,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-09-13",
+      "contributionCount": 7,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-14",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-15",
+      "contributionCount": 32,
+      "contributionLevel": "FOURTH_QUARTILE"
+    },
+    {
+      "date": "2026-09-16",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-17",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-18",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-19",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-20",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-21",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-22",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-23",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-24",
+      "contributionCount": 10,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-09-25",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-26",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-09-27",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-28",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-29",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-09-30",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-10-01",
+      "contributionCount": 6,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-10-02",
+      "contributionCount": 12,
+      "contributionLevel": "SECOND_QUARTILE"
+    },
+    {
+      "date": "2026-10-03",
+      "contributionCount": 18,
+      "contributionLevel": "THIRD_QUARTILE"
+    },
+    {
+      "date": "2026-10-04",
+      "contributionCount": 2,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-10-05",
+      "contributionCount": 1,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-10-06",
+      "contributionCount": 5,
+      "contributionLevel": "FIRST_QUARTILE"
+    },
+    {
+      "date": "2026-10-07",
+      "contributionCount": 11,
+      "contributionLevel": "SECOND_QUARTILE"
+    }
+  ],
+  "source": "GitHub GraphQL API"
+}

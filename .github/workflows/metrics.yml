@@ -6,6 +6,16 @@ on:
     - cron: '0 6 * * *'
   workflow_dispatch:
     # Allow manual trigger from Actions tab
+  push:
+    branches: [main]
+    paths: ['scripts/**', 'themes/**', 'config.yml', '.github/workflows/metrics.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   generate-metrics:
@@ -15,12 +25,15 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          python-version: '3.13'
+
+      - name: Check generator regressions
+        run: python -m unittest discover -s tests -v
 
       - name: Generate Dynamic Metrics SVGs
         env:
@@ -33,6 +46,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/metrics/*.svg
+          git add -- assets/metrics/year-in-code.svg assets/metrics/languages-commits.svg assets/metrics/languages-recent.svg assets/metrics/metrics.json
           git diff --cached --quiet || git commit -m "chore: update dynamic GitHub metrics SVGs [skip ci]"
           git push
