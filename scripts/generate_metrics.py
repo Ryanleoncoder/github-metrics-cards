@@ -40,8 +40,7 @@ def _save(name, svg):
 def _stamp(cfg):
     if cfg.get("_demo"):
         return "DEMO DATA / THEME PREVIEW"
-    generated = cfg.get("_data", {}).get("generated_at", "")
-    return f"UPDATED {generated[:16].replace('T', ' ')} UTC" if generated else ""
+    return ""
 
 
 def _footer(svg, cfg, height, color):
@@ -109,6 +108,7 @@ def generate_languages_commits_svg(lang_stats, cfg):
     primary_text = THEME.get("primary_text", "#0A0A0A")
     svg.append(f'  <text x="480" y="54" text-anchor="middle" fill="{primary_text}" font-family="monospace" font-size="10" font-weight="700">{"BY COMMITS" if by_commits else "BY BYTES"}</text>')
 
+    row_h = max(42, (svg_h - (180 if by_commits else 130)) / max(1, num_items))
     y_pos = 109
     for lang, pct, col in items:
         cy = y_pos + 12
@@ -124,7 +124,7 @@ def generate_languages_commits_svg(lang_stats, cfg):
     if not items:
         svg.append(f'<text x="38" y="135" fill="{THEME["light_text"]}" font-family="Arial" font-size="16">No language data in this period.</text>')
     elif by_commits:
-        y = y_pos + 18
+        y = svg_h - 102
         svg.append(f'<path d="M38 {y} H536" stroke="{THEME["light_border"]}"/>')
         svg.append(f'<text x="38" y="{y+27}" fill="{THEME["light_text"]}" font-family="Arial" font-size="18" font-weight="700">{total_bytes:,} commits</text>')
         svg.append(f'<text x="38" y="{y+47}" fill="{THEME["light_subtext"]}" font-family="monospace" font-size="10">Grouped by each repository’s main language.</text>')
@@ -325,7 +325,6 @@ def generate_year_in_code_svg(contribution_days, cfg):
         svg.append(f'    <rect x="{i*21}" y="-10" width="14" height="14" fill="{top_cols[i]}" stroke="{THEME["light_border"]}" stroke-width="1"/>')
     svg.append('  </g>')
     svg.append(f'  <text x="193" y="342" fill="{THEME["light_text"]}" font-family="monospace" font-size="11" font-weight="700">MORE</text>')
-    svg.append(f'<text x="1124" y="342" text-anchor="end" fill="{THEME["light_text"]}" font-family="monospace" font-size="11">{first_day} — {last_day}</text>')
     svg.append(f'<text x="1124" y="358" text-anchor="end" fill="{THEME["light_subtext"]}" font-family="monospace" font-size="10">{escape(_stamp(cfg))}</text>')
     svg.append('</svg>')
     _save("year-in-code.svg", svg)

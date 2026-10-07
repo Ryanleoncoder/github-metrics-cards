@@ -11,28 +11,28 @@
   <rect x="195" y="109" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
   <rect x="195" y="109" width="110" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
   <text x="498" y="122" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">38%</text>
-  <circle cx="52" cy="163" r="6" fill="#3776AB" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="70" y="168" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">PYTHON</text>
-  <rect x="195" y="151" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
-  <rect x="195" y="151" width="78" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="498" y="164" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">27%</text>
-  <circle cx="52" cy="205" r="6" fill="#E34F26" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="70" y="210" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">HTML</text>
-  <rect x="195" y="193" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
-  <rect x="195" y="193" width="44" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="498" y="206" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">15%</text>
-  <circle cx="52" cy="247" r="6" fill="#1572B6" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="70" y="252" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">CSS</text>
-  <rect x="195" y="235" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
-  <rect x="195" y="235" width="35" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="498" y="248" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">12%</text>
-  <circle cx="52" cy="289" r="6" fill="#89E051" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="70" y="294" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">SHELL</text>
-  <rect x="195" y="277" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
-  <rect x="195" y="277" width="23" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
-  <text x="498" y="290" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">8%</text>
-<path d="M38 337 H536" stroke="#3F3F46"/>
-<text x="38" y="364" fill="#FFFFFF" font-family="Arial" font-size="18" font-weight="700">12,000 commits</text>
-<text x="38" y="384" fill="#A1A1AA" font-family="monospace" font-size="10">Grouped by each repository’s main language.</text>
+  <circle cx="52" cy="179.0" r="6" fill="#3776AB" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="70" y="184.0" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">PYTHON</text>
+  <rect x="195" y="167.0" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
+  <rect x="195" y="167.0" width="78" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="498" y="180.0" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">27%</text>
+  <circle cx="52" cy="237.0" r="6" fill="#E34F26" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="70" y="242.0" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">HTML</text>
+  <rect x="195" y="225.0" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
+  <rect x="195" y="225.0" width="44" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="498" y="238.0" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">15%</text>
+  <circle cx="52" cy="295.0" r="6" fill="#1572B6" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="70" y="300.0" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">CSS</text>
+  <rect x="195" y="283.0" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
+  <rect x="195" y="283.0" width="35" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="498" y="296.0" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">12%</text>
+  <circle cx="52" cy="353.0" r="6" fill="#89E051" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="70" y="358.0" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="15" font-weight="800">SHELL</text>
+  <rect x="195" y="341.0" width="290" height="16" rx="4" fill="#27272A" stroke="#3F3F46" stroke-width="1.5"/>
+  <rect x="195" y="341.0" width="23" height="16" rx="4" fill="#3B82F6" stroke="#3F3F46" stroke-width="1.5"/>
+  <text x="498" y="354.0" fill="#FFFFFF" font-family="monospace" font-size="12" font-weight="700">8%</text>
+<path d="M38 368 H536" stroke="#3F3F46"/>
+<text x="38" y="395" fill="#FFFFFF" font-family="Arial" font-size="18" font-weight="700">12,000 commits</text>
+<text x="38" y="415" fill="#A1A1AA" font-family="monospace" font-size="10">Grouped by each repository’s main language.</text>
 <text x="536" y="440" text-anchor="end" fill="#A1A1AA" font-family="monospace" font-size="10">DEMO DATA / THEME PREVIEW</text>
 </svg>

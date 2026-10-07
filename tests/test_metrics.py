@@ -157,7 +157,7 @@ class RenderTests(unittest.TestCase):
         self.assertEqual(len(tiles), 120)
         self.assertEqual(tiles[0].get("data-date"), self.data["days"][0]["date"])
         self.assertEqual(len({node.get("data-date") for node in tiles}), 120)
-        self.assertIn("2026-06-08 — 2026-10-05", " ".join(root.itertext()))
+        self.assertNotIn("2026-06-08 — 2026-10-05", " ".join(root.itertext()))
 
     def test_special_characters_are_escaped_and_tags_can_be_hidden(self):
         self.cfg["top_repos"]["show_language"] = False
@@ -168,13 +168,17 @@ class RenderTests(unittest.TestCase):
         self.assertNotIn("Python", text)
         self.assertNotIn("#topic", text)
 
-    def test_cards_have_the_same_height_and_freshness(self):
+    def test_cards_have_the_same_height_and_no_visible_timestamp(self):
         renderer.generate_languages_commits_svg(self.data["languages"], self.cfg)
         renderer.generate_top_repos_svg(self.data["repos"], self.cfg)
         langs = self.read("languages-commits.svg")
         repos = self.read("languages-recent.svg")
         self.assertEqual(langs.get("height"), repos.get("height"))
-        self.assertIn("UPDATED 2026-10-05 18:00 UTC", " ".join(langs.itertext()))
+        text = " ".join(langs.itertext())
+        self.assertNotIn("UPDATED", text)
+        self.assertNotIn("ACTIVE REPOS", text)
+        self.assertNotIn("COMMIT MIX", text)
+        self.assertIn("commits", text)
 
     def test_language_percentages_add_to_one_hundred(self):
         renderer.generate_languages_commits_svg({"Python": 1, "Java": 1, "Go": 1}, self.cfg)

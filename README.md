@@ -17,7 +17,7 @@ Beautiful, dynamic, customizable GitHub profile metrics cards. Pick your palette
 - `recent_commits` weights each repository's primary language by its recent commit count. It does not measure the language of every changed line. `code_size` uses repository language bytes instead.
 - Public repositories are used by default. Calendar totals follow GitHub's visibility settings and can differ from the public repository ranking.
 
-Each card includes its update time. Collection errors stop generation and preserve previous output; no invented statistics are substituted. Files under `examples/` are explicitly marked demos.
+The update time is recorded in `assets/metrics/metrics.json`, not displayed on the cards. Collection errors stop generation and preserve previous output; no invented statistics are substituted. Files under `examples/` are explicitly marked demos.
 
 ## Embed in your profile
 
