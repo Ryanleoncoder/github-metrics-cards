@@ -350,6 +350,13 @@ def main():
                 generate_top_repos_svg(data["repos"], cfg)
             if cfg["cards"]["year_in_code"]:
                 generate_year_in_code_svg(data["days"], cfg)
+            aliases = {"year-in-code.svg": "contribution-activity.svg",
+                       "languages-commits.svg": "commit-languages.svg",
+                       "languages-recent.svg": "active-repositories.svg"}
+            for original, alias in aliases.items():
+                source = Path(stage) / original
+                if source.exists():
+                    (Path(stage) / alias).write_bytes(source.read_bytes())
             (Path(stage) / "metrics.json").write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
             for artifact in Path(stage).iterdir():
                 (target / artifact.name).write_bytes(artifact.read_bytes())
