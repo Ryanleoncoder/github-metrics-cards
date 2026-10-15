@@ -1,15 +1,15 @@
 {
   "username": "Ryanleoncoder",
-  "generated_at": "2026-10-14T11:10:00.816370Z",
-  "start": "2026-06-17",
-  "end": "2026-10-14",
-  "recent_start": "2026-09-15",
+  "generated_at": "2026-10-15T10:50:43.934978Z",
+  "start": "2026-06-18",
+  "end": "2026-10-15",
+  "recent_start": "2026-09-16",
   "include_private": false,
   "repos": [
     {
       "name": "RobinBandit",
       "url": "https://github.com/Ryanleoncoder/RobinBandit",
-      "commits": 28,
+      "commits": 17,
       "topics": [
         "adaptive-routing",
         "ai-infrastructure",
@@ -42,45 +42,6 @@
       ]
     },
     {
-      "name": "order-events-lab",
-      "url": "https://github.com/Ryanleoncoder/order-events-lab",
-      "commits": 6,
-      "topics": [
-        "event-driven",
-        "kafka",
-        "messaging"
-      ],
-      "languages": [
-        "Python"
-      ]
-    },
-    {
-      "name": "service-request-api",
-      "url": "https://github.com/Ryanleoncoder/service-request-api",
-      "commits": 6,
-      "topics": [
-        "java",
-        "maven",
-        "mongodb"
-      ],
-      "languages": [
-        "Java"
-      ]
-    },
-    {
-      "name": "customer-data-pipeline",
-      "url": "https://github.com/Ryanleoncoder/customer-data-pipeline",
-      "commits": 5,
-      "topics": [
-        "data-pipeline",
-        "etl",
-        "mongodb"
-      ],
-      "languages": [
-        "Python"
-      ]
-    },
-    {
       "name": "github-metrics-cards",
       "url": "https://github.com/Ryanleoncoder/github-metrics-cards",
       "commits": 3,
@@ -91,16 +52,10 @@
     }
   ],
   "languages": {
-    "Python": 52,
-    "Go": 11,
-    "Java": 6
+    "Python": 30,
+    "Go": 11
   },
   "days": [
-    {
-      "date": "2026-06-17",
-      "contributionCount": 0,
-      "contributionLevel": "NONE"
-    },
     {
       "date": "2026-06-18",
       "contributionCount": 2,
@@ -693,6 +648,11 @@
     },
     {
       "date": "2026-10-14",
+      "contributionCount": 0,
+      "contributionLevel": "NONE"
+    },
+    {
+      "date": "2026-10-15",
       "contributionCount": 0,
       "contributionLevel": "NONE"
     }
